@@ -1,0 +1,27 @@
+{
+  "name": "plutus-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J4nn1K/plutus-backend.git"
+  },
+  "author": "J4nn1K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J4nn1K/plutus-backend/issues"
+  },
+  "homepage": "https://github.com/J4nn1K/plutus-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.18.0"
+  }
+}
