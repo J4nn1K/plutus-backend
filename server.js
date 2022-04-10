@@ -24,6 +24,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to this application." });
 });
 
+// routes
+require("./app/routes/asset.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
