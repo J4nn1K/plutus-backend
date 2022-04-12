@@ -16,9 +16,23 @@ exports.create = (req, res) => {
         });
         return;
     }
+    if (!req.body.type) {
+        res.status(400).send({
+            message: "Type can not be empty!"
+        });
+        return;
+    }
+    if (!req.body.identification) {
+        res.status(400).send({
+            message: "Identification can not be empty!"
+        });
+        return;
+    }
     // Create a Asset
     const asset = {
         name: req.body.name,
+        type: req.body.type,
+        identification: req.body.identification,
         amount: req.body.amount,
         institution: req.body.institution,
         portfolio: req.body.portfolio
