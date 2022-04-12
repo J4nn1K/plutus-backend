@@ -41,15 +41,18 @@ exports.get = (req, res) => {
 
     // consume promise
     promise.then(value => {
+        timestamp = value.status.timestamp
+        symbol = value.data[identification][0].symbol
+        quote = value.data[identification][0].quote.EUR
         res.send({
-            timestamp: value.status.timestamp,
-            symbol: value.data[identification][0].symbol,
-            price: value.data[identification][0].quote.EUR.price,
-            percent_change_24h: value.data[identification][0].quote.EUR.percent_change_24h,
-            percent_change_7d: value.data[identification][0].quote.EUR.percent_change_7d,
-            percent_change_30d: value.data[identification][0].quote.EUR.percent_change_30d,
-            percent_change_60d: value.data[identification][0].quote.EUR.percent_change_60d,
-            percent_change_90d: value.data[identification][0].quote.EUR.percent_change_90d,
+            timestamp: timestamp,
+            symbol: symbol,
+            price: quote.price,
+            percent_change_24h: quote.percent_change_24h,
+            percent_change_7d: quote.percent_change_7d,
+            percent_change_30d: quote.percent_change_30d,
+            percent_change_60d: quote.percent_change_60d,
+            percent_change_90d: quote.percent_change_90d,
         })
     }); 
 };
