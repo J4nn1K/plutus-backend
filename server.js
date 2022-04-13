@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 // routes
 require("./app/routes/asset.routes")(app);
+require("./app/routes/quote.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5000;
