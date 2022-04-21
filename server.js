@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./app/models");
 
 const app = express();
 
@@ -25,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // database
+const db = require("./app/models");
 db.sequelize.sync();
 
 // simple route
@@ -35,6 +35,8 @@ app.get("/", (req, res) => {
 // routes
 require("./app/routes/asset.routes")(app);
 require("./app/routes/quote.routes")(app);
+require("./app/routes/key.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5000;

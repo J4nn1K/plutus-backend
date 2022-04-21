@@ -11,4 +11,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.assets = require("./asset.model.js")(sequelize, Sequelize);
+db.keys = require("./key.model.js")(sequelize, Sequelize);
+
 module.exports = db;

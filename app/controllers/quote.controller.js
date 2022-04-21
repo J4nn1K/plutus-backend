@@ -1,5 +1,7 @@
 const axios = require('axios');
 const keyConfig = require("../config/key.config.js");
+const db = require("../models");
+const Key = db.keys;
 
 exports.get = (req, res) => {
     // Validate request
@@ -19,7 +21,7 @@ exports.get = (req, res) => {
     const identification = req.query.identification
     const type = req.query.type
 
-    if (type == 'Crypto') {
+    if (type == 'Cryptocurrency') {
         
         // CoinMarketCap request for cryptocurrencies
         let response = null;
@@ -28,7 +30,8 @@ exports.get = (req, res) => {
             try {
                 response = await axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest', {
                     headers: {
-                        'X-CMC_PRO_API_KEY': keyConfig.CMC_PRO_API_KEY,
+                        // 'X-CMC_PRO_API_KEY': keyConfig.CMC_PRO_API_KEY,
+                        "X-CMC_PRO_API_KEY": Key.findAll({where:{name: "CoinMarketCap API Key"}})
                     },
                     params: {
                         'symbol': identification,
@@ -75,7 +78,7 @@ exports.get = (req, res) => {
             try {
                 response = await axios.get('https://data.lemon.markets/v1/quotes', {
                     headers: {
-                        'Authorization': keyConfig.LEMON_MARKETS_API_KEY,
+                        'Authorization': Key.findAll({where:{name: "lemon.markets API Key"}})
                     },
                     params: {
                         'isin': identification,
